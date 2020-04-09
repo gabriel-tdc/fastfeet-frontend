@@ -28,7 +28,11 @@ export default function Routes() {
         component={CadastroEncomendas}
         isPrivate
       />
-      <Route path="/editar/encomenda" component={EditarEncomendas} isPrivate />
+      <Route
+        path="/editar/encomenda/:id"
+        component={EditarEncomendas}
+        isPrivate
+      />
 
       <Route path="/entregadores" component={Entregadores} isPrivate />
       <Route
@@ -46,8 +50,13 @@ export default function Routes() {
       <Route
         path="/cadastrar/destinatario"
         component={CadastrarDestinatarios}
+        isPrivate
       />
-      <Route path="/editar/destinatario" component={EditarDestinatarios} />
+      <Route
+        path="/editar/destinatario/:id"
+        component={EditarDestinatarios}
+        isPrivate
+      />
 
       <Route path="/problemas" component={Problemas} isPrivate />
     </Switch>

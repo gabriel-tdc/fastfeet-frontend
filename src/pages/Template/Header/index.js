@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+
+import { signOut } from '~/store/modules/auth/actions';
 
 import logo from '~/assets/fastfeet.svg';
 
@@ -10,6 +12,12 @@ export default function Header() {
   const userName = useSelector(state => state.user.profile.name);
   const { pathname } = useLocation();
   const activeStyle = { color: '#444444' };
+
+  const dispatch = useDispatch();
+
+  function handleSignOut() {
+    dispatch(signOut());
+  }
 
   return (
     <Menu>
@@ -48,9 +56,9 @@ export default function Header() {
           </Link>
         </li>
       </Nav>
-      <Logout>
+      <Logout onClick={handleSignOut}>
         <p>{userName}</p>
-        <Link to="/">sair do sistema</Link>
+        <span to="/">sair do sistema</span>
       </Logout>
     </Menu>
   );

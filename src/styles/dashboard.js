@@ -110,6 +110,14 @@ export const Title = styled.h1`
   margin-bottom: 34px;
 `;
 
+export const PageWarn = styled.h2`
+  font-size: 20px;
+  color: #444444;
+  margin-top: 34px;
+  background-color: #fff;
+  padding: 20px;
+`;
+
 export const Searchbox = styled.label`
   svg {
     margin: 0 -28px -3px 11px;

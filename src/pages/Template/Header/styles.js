@@ -48,7 +48,8 @@ export const Logout = styled.div`
     margin-bottom: 5px;
     font-weight: bold;
   }
-  a {
+  span {
     color: #de3b3b;
+    cursor: pointer;
   }
 `;

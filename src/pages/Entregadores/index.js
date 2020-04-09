@@ -22,6 +22,7 @@ import Header from '~/pages/Template/Header/';
 import {
   Content,
   Title,
+  PageWarn,
   ContentHeader,
   Searchbox,
   SearchInput,
@@ -35,8 +36,8 @@ import {
 } from '~/styles/dashboard';
 
 export default function Entregadores() {
-  const [visible, setVisible] = useState(false);
   const [tableData, setTableData] = useState([]);
+  const [visible, setVisible] = useState(false);
   const [modalVisible, setModalVisible] = useState(false);
   const [loading, setLoading] = useState(false);
   const [search, setSearch] = useState(false);
@@ -123,84 +124,92 @@ export default function Entregadores() {
           </Link>
         </ContentHeader>
 
-        <table>
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Foto</th>
-              <th>Nome</th>
-              <th>E-mail</th>
-              <th>Ações</th>
-            </tr>
-          </thead>
-
-          <tbody>
-            {tableData.map(entregador => (
-              <tr key={entregador.id}>
-                <td>#{entregador.id}</td>
-                <td>
-                  <img
-                    src={
-                      entregador.avatar
-                        ? `http://localhost:3333/files/${entregador.avatar.path}`
-                        : `https://ui-avatars.com/api/?name=${entregador.name}`
-                    }
-                    className="avatar"
-                    alt="Avatar"
-                  />
-                </td>
-                <td>{entregador.name}</td>
-                <td>{entregador.email}</td>
-                <td>
-                  <Acoes
-                    onMouseEnter={() => handleSetVisible(entregador.id)}
-                    onMouseLeave={() => handleSetInvisible()}
-                  >
-                    <FaEllipsisH />
-                    <Dropdown visible={visible && visible === entregador.id}>
-                      <DropdownItem>
-                        <Link to={`/editar/entregador/${entregador.id}`}>
-                          <FaPen color="#4D85EE" />
-                          <div>Editar</div>
-                        </Link>
-                      </DropdownItem>
-                      <DropdownItem
-                        onClick={() => handleSetModalVisible(entregador.id)}
-                      >
-                        <span>
-                          <FaTrash color="#DE3B3B" />
-                          <div>Excluir</div>
-                        </span>
-                      </DropdownItem>
-                    </Dropdown>
-                  </Acoes>
-
-                  <Modal
-                    id={entregador.id}
-                    visible={modalVisible && modalVisible === entregador.id}
-                  >
-                    <div className="modal-body">
-                      <div className="modal-header">
-                        <FaTimes onClick={() => handleSetModalInvisible()} />
-                      </div>
-                      <h2>Aviso</h2>
-                      Você tem certeza que quer apagar o entregador{' '}
-                      <b>{entregador.name}</b>?
-                      <div className="modal-footer">
-                        <PrimaryButton onClick={handleDelete}>
-                          Apagar
-                        </PrimaryButton>
-                        <SecondaryButton onClick={handleSetModalInvisible}>
-                          Cancelar
-                        </SecondaryButton>
-                      </div>
-                    </div>
-                  </Modal>
-                </td>
+        {tableData.length ? (
+          <table>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Foto</th>
+                <th>Nome</th>
+                <th>E-mail</th>
+                <th>Ações</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+
+            <tbody>
+              {tableData.map(entregador => (
+                <tr key={entregador.id.toString()}>
+                  <td>#{entregador.id}</td>
+                  <td>
+                    <img
+                      src={
+                        entregador.avatar
+                          ? `http://localhost:3333/files/${entregador.avatar.path}`
+                          : `https://ui-avatars.com/api/?name=${entregador.name}`
+                      }
+                      className="avatar"
+                      alt="Avatar"
+                    />
+                  </td>
+                  <td>{entregador.name}</td>
+                  <td>{entregador.email}</td>
+                  <td>
+                    <Acoes
+                      onMouseEnter={() => handleSetVisible(entregador.id)}
+                      onMouseLeave={() => handleSetInvisible()}
+                    >
+                      <FaEllipsisH />
+                      <Dropdown visible={visible && visible === entregador.id}>
+                        <DropdownItem>
+                          <Link to={`/editar/entregador/${entregador.id}`}>
+                            <FaPen color="#4D85EE" />
+                            <div>Editar</div>
+                          </Link>
+                        </DropdownItem>
+                        <DropdownItem
+                          onClick={() => handleSetModalVisible(entregador.id)}
+                        >
+                          <span>
+                            <FaTrash color="#DE3B3B" />
+                            <div>Excluir</div>
+                          </span>
+                        </DropdownItem>
+                      </Dropdown>
+                    </Acoes>
+
+                    <Modal
+                      id={entregador.id}
+                      visible={modalVisible && modalVisible === entregador.id}
+                    >
+                      <div className="modal-body">
+                        <div className="modal-header">
+                          <FaTimes onClick={() => handleSetModalInvisible()} />
+                        </div>
+                        <h2>Aviso</h2>
+                        Você tem certeza que quer apagar o entregador{' '}
+                        <b>{entregador.name}</b>?
+                        <div className="modal-footer">
+                          <PrimaryButton
+                            onClick={() => handleDelete(entregador.id)}
+                          >
+                            Apagar
+                          </PrimaryButton>
+                          <SecondaryButton onClick={handleSetModalInvisible}>
+                            Cancelar
+                          </SecondaryButton>
+                        </div>
+                      </div>
+                    </Modal>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        ) : (
+          <PageWarn>
+            {loading ? 'Carregando' : 'Nenhum dado encontrado'}
+          </PageWarn>
+        )}
       </Content>
     </>
   );
