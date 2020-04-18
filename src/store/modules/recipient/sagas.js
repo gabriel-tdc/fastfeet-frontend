@@ -20,7 +20,7 @@ export function* recipientPost({ payload }) {
 
     yield call(api.post, '/recipients', data);
 
-    toast.success('Encomenda cadastrada com sucesso!');
+    toast.success('Destinatário cadastrado com sucesso!');
 
     yield put(recipientPostSuccess());
 
@@ -37,7 +37,7 @@ export function* recipientUpdate({ payload }) {
 
     yield call(api.put, `recipients/${id}`, data);
 
-    toast.success('Encomenda atualizado com sucesso!');
+    toast.success('Destinatário atualizado com sucesso!');
 
     yield put(recipientUpdateSuccess());
 
@@ -56,7 +56,7 @@ export function* recipientDelete({ payload }) {
 
     const data = yield call(api.get, 'recipients');
 
-    toast.success('Encomenda removida com sucesso!');
+    toast.success('Destinatário removido com sucesso!');
 
     yield put(recipientDeleteSuccess(data));
 

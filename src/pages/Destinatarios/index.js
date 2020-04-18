@@ -17,7 +17,7 @@ import { recipientDelete } from '~/store/modules/recipient/actions';
 
 import api from '~/services/api';
 
-import Header from '~/pages/Template/Header/';
+import Header from '~/components/Header/';
 
 import {
   Content,

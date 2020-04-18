@@ -13,7 +13,7 @@ import { problemCancel } from '~/store/modules/problem/actions';
 
 import api from '~/services/api';
 
-import Header from '~/pages/Template/Header/';
+import Header from '~/components/Header/';
 
 import {
   Content,

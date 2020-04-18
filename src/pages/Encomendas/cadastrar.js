@@ -11,7 +11,7 @@ import * as Yup from 'yup';
 import { FaChevronLeft, FaCheck } from 'react-icons/fa';
 import { deliveryPost } from '~/store/modules/delivery/actions';
 
-import Header from '~/pages/Template/Header/';
+import Header from '~/components/Header/';
 
 import {
   Content,

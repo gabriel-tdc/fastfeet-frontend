@@ -37,7 +37,7 @@ export function* deliveryUpdate({ payload }) {
 
     yield call(api.put, `delivery/${id}`, data);
 
-    toast.success('Encomenda atualizado com sucesso!');
+    toast.success('Encomenda atualizada com sucesso!');
 
     yield put(deliveryUpdateSuccess());
 

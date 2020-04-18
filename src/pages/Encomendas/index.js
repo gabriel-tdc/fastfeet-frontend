@@ -21,9 +21,7 @@ import { deliveryDelete } from '~/store/modules/delivery/actions';
 
 import api from '~/services/api';
 
-import Assinatura from '~/assets/assinatura.png';
-
-import Header from '~/pages/Template/Header/';
+import Header from '~/components/Header/';
 
 import {
   Content,
@@ -315,7 +313,7 @@ export default function Encomendas() {
                             }
                           )}{' '}
                           <br />
-                          <b>Entrega:</b>
+                          <b>Entrega:</b>{' '}
                           {format(
                             new Date(encomenda.entrega),
                             "d'/'MM'/'yyyy",
@@ -329,7 +327,11 @@ export default function Encomendas() {
 
                         <h2>Assinatura do destinatário</h2>
                         <div className="center">
-                          <img src={Assinatura} alt="Assintura" />
+                          <img
+                            src={`http://localhost:3333/files/${encomenda.signature}`}
+                            alt="Assinatura"
+                            className="assinatura"
+                          />
                         </div>
                       </div>
                     </Modal>

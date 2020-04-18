@@ -7,11 +7,11 @@ import { Form, Input } from '@rocketseat/unform';
 import { FaChevronLeft, FaCheck } from 'react-icons/fa';
 import { deliverymanUpdate } from '~/store/modules/deliveryman/actions';
 
-import PhotoHolder from './PhotoHolder';
+import PhotoHolder from '~/components/PhotoHolder';
 
 import api from '~/services/api';
 
-import Header from '~/pages/Template/Header/';
+import Header from '~/components/Header/';
 
 import {
   Content,

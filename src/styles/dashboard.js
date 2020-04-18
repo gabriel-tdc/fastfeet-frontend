@@ -100,8 +100,12 @@ export const Container = styled.div`
   }
 
   .full-width {
-    grid-column: 1 / 3;
+    grid-column: 1 / 4;
   }
+`;
+
+export const Col3 = styled.div`
+  flex: 0.33334;
 `;
 
 export const Title = styled.h1`
@@ -255,6 +259,10 @@ export const Modal = styled.div`
 
     .center {
       text-align: center;
+    }
+
+    .assinatura {
+      max-width: 60%;
     }
   }
 

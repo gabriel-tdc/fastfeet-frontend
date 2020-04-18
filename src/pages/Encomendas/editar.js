@@ -11,7 +11,7 @@ import { deliveryUpdate } from '~/store/modules/delivery/actions';
 
 import api from '~/services/api';
 
-import Header from '~/pages/Template/Header/';
+import Header from '~/components/Header/';
 
 import {
   Content,
@@ -137,7 +137,7 @@ export default function EditarEncomenda() {
               <label htmlFor="recipient">Destinatário</label>
               <AsyncSelect
                 cacheOptions
-                defaultValue={optionsRecipient.find(o => o.value === 2)}
+                defaultValue={2}
                 loadOptions={loadOptionsRecipient}
                 defaultOptions={optionsRecipient}
                 onChange={inputValue =>

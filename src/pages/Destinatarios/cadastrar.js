@@ -9,7 +9,7 @@ import { FaChevronLeft, FaCheck } from 'react-icons/fa';
 
 import { recipientPost } from '~/store/modules/recipient/actions';
 
-import Header from '~/pages/Template/Header/';
+import Header from '~/components/Header/';
 
 import {
   Content,
@@ -19,6 +19,7 @@ import {
   PrimaryButton,
   SecondaryButton,
   Col,
+  Col3,
 } from '~/styles/dashboard';
 
 const schema = Yup.object().shape({
@@ -70,7 +71,7 @@ export default function Destinatarios() {
               />
             </div>
 
-            <div className="full-width">
+            <Col3>
               <label htmlFor="street">Rua</label>
               <Input
                 type="text"
@@ -78,24 +79,24 @@ export default function Destinatarios() {
                 name="street"
                 placeholder="Rua Beethoven"
               />
-            </div>
+            </Col3>
 
-            <div className="full-width">
+            <Col3>
               <label htmlFor="number">Número</label>
               <Input type="text" id="number" name="number" placeholder="1729" />
-            </div>
+            </Col3>
 
-            <div className="full-width">
+            <Col3>
               <label htmlFor="complement">Complemento</label>
               <Input type="text" id="complement" name="complement" />
-            </div>
+            </Col3>
 
-            <div className="full-width">
+            <Col3>
               <label htmlFor="city">Cidade</label>
               <Input type="text" id="city" name="city" placeholder="Diadema" />
-            </div>
+            </Col3>
 
-            <div className="full-width">
+            <Col3>
               <label htmlFor="state">Estado</label>
               <Input
                 type="text"
@@ -103,12 +104,12 @@ export default function Destinatarios() {
                 name="state"
                 placeholder="São Paulo"
               />
-            </div>
+            </Col3>
 
-            <div className="full-width">
+            <Col3>
               <label htmlFor="cep">CEP</label>
               <Input type="text" id="cep" name="cep" placeholder="09960-580" />
-            </div>
+            </Col3>
           </Container>
         </Form>
       </Content>
