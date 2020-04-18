@@ -292,7 +292,7 @@ export default function Encomendas() {
                         <div className="modal-header">
                           <FaTimes onClick={() => handleSetModalInvisible()} />
                         </div>
-                        <h2>Informações da encomenda1</h2>
+                        <h2>Informações da encomenda</h2>
                         <p>
                           {encomenda.street}, {encomenda.number} <br />
                           {encomenda.city} - {encomenda.state} <br />
