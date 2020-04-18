@@ -3,6 +3,7 @@ import { ToastContainer } from 'react-toastify';
 import { PersistGate } from 'redux-persist/integration/react';
 import { Provider } from 'react-redux';
 import { Router } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 
 import './config/ReactotronConfig';
 
@@ -18,6 +19,9 @@ function App() {
     <Provider store={store}>
       <PersistGate persistor={persistor}>
         <Router history={history}>
+          <Helmet>
+            <title>Fast Feet</title>
+          </Helmet>
           <Routes />
           <GlobalStyle />
           <ToastContainer autoClose={3000} />

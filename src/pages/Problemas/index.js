@@ -19,8 +19,6 @@ import {
   Content,
   Title,
   PageWarn,
-  PrimaryButton,
-  SecondaryButton,
   Acoes,
   Dropdown,
   DropdownItem,

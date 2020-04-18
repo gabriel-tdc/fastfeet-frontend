@@ -133,6 +133,7 @@ export default function CadastrarDestinatarios() {
               <label htmlFor="recipient">Destinatário</label>
               <AsyncSelect
                 cacheOptions
+                placeholder="Selecione um destinatário..."
                 loadOptions={loadOptionsRecipient}
                 defaultOptions={optionsRecipient}
                 onChange={inputValue =>
@@ -146,6 +147,7 @@ export default function CadastrarDestinatarios() {
               <label htmlFor="deliveryman">Entregador</label>
               <AsyncSelect
                 cacheOptions
+                placeholder="Selecione um entregador..."
                 loadOptions={loadOptionsDeliveryman}
                 defaultOptions={optionsDeliveryman}
                 onChange={inputValue =>

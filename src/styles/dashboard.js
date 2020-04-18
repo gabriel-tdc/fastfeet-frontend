@@ -102,6 +102,11 @@ export const Container = styled.div`
   .full-width {
     grid-column: 1 / 4;
   }
+
+  .hide {
+    position: absolute;
+    top: -1000px;
+  }
 `;
 
 export const Col3 = styled.div`

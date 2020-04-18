@@ -27,7 +27,8 @@ export default function EditarEncomenda() {
   const [tableData, setData] = useState([]);
   const [deliverymanData, setDeliverymanData] = useState([]);
   const [recipientData, setRecipientData] = useState([]);
-  // const [recipientSelected, setRecipientSelected] = useState({});
+  const [recipientSelected, setRecipientSelected] = useState({});
+  const [deliveryManSelected, setDeliveryManSelected] = useState({});
   const { id } = useParams();
 
   const dispatch = useDispatch();
@@ -56,12 +57,20 @@ export default function EditarEncomenda() {
 
       setData(response.data);
 
-      // setRecipientSelected({ label: 'Gabriel (SP TETaa)', value: 2 });
+      setRecipientSelected({
+        label: `${response.data.recipients.name} (${response.data.recipients.city}, ${response.data.recipients.state})`,
+        value: response.data.recipients.id,
+      });
+      setDeliveryManSelected({
+        label: response.data.deliveryman.name,
+        value: response.data.deliveryman.id,
+      });
     }
     loadEncomendas();
   }, [id]);
 
   function handleSubmit(data) {
+    // console.log(data);
     dispatch(deliveryUpdate(id, data));
   }
 
@@ -109,6 +118,11 @@ export default function EditarEncomenda() {
     });
 
   function setValue(value, name) {
+    if (name === 'recipient_id') {
+      setRecipientSelected();
+    } else {
+      setDeliveryManSelected();
+    }
     document.getElementById(name).value = value;
   }
 
@@ -136,28 +150,37 @@ export default function EditarEncomenda() {
             <div>
               <label htmlFor="recipient">Destinatário</label>
               <AsyncSelect
-                cacheOptions
-                defaultValue={2}
+                value={recipientSelected}
                 loadOptions={loadOptionsRecipient}
                 defaultOptions={optionsRecipient}
                 onChange={inputValue =>
                   setValue(inputValue.value, 'recipient_id')
                 }
               />
-              <Input type="hidden" name="recipient_id" id="recipient_id" />
+              <Input
+                type="text"
+                name="recipient_id"
+                id="recipient_id"
+                class="hide"
+              />
             </div>
 
             <div>
               <label htmlFor="deliveryman">Entregador</label>
               <AsyncSelect
-                cacheOptions
+                value={deliveryManSelected}
                 loadOptions={loadOptionsDeliveryman}
                 defaultOptions={optionsDeliveryman}
                 onChange={inputValue =>
                   setValue(inputValue.value, 'deliveryman_id')
                 }
               />
-              <Input type="hidden" name="deliveryman_id" id="deliveryman_id" />
+              <Input
+                type="text"
+                name="deliveryman_id"
+                id="deliveryman_id"
+                class="hide"
+              />
             </div>
 
             <div className="full-width">
